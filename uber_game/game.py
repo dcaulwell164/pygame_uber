@@ -1,6 +1,7 @@
 import pygame
 from utils import load_sprite
 from models import Rider
+from mixer import Mixer
 
 class Game:
     def __init__(self):
@@ -9,6 +10,10 @@ class Game:
         self.background = load_sprite("road", False)
         self.clock = pygame.time.Clock()
         self.rider = Rider((400,300))
+        self.mixer = Mixer()
+        self.mixer.play_sound("bike_sound", 0.3, -1)
+        self.mixer.play_sound("city_sound", 0.1, -1)
+        self.mixer.play_sound("musiq", 0.01, -1)
 
     def main_loop(self):
         while True:
@@ -19,6 +24,8 @@ class Game:
     def _init_pygame(self):
         pygame.init()
         pygame.display.set_caption("space game")
+        
+        
 
     def _handle_input(self):
         for event in pygame.event.get():
